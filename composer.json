@@ -1,0 +1,12 @@
+{
+    "name": "yevgenii-v/ps-package",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "YevgeniiV\\PsPackage\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
