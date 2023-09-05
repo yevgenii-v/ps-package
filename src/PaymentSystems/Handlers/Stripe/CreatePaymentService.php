@@ -14,12 +14,14 @@ class CreatePaymentService
      */
     public function handle(StripeClient $stripeClient, MakePaymentDTO $makePaymentDTO): string
     {
-        $result = $stripeClient->paymentIntents->create([
+        $data = $stripeClient->paymentIntents->create([
             'amount' => $makePaymentDTO->getAmount() * 100,
             'currency' => $this->getCurrency($makePaymentDTO->getCurrency()),
         ]);
 
-        return $result->client_secret;
+        $result = ['id' => $data->client_secret];
+
+        return json_encode($result, true);
     }
 
     private function getCurrency(Currency $currency): string

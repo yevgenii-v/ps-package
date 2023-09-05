@@ -26,11 +26,13 @@ class CreatePaymentService
             ]
         ]);
 
+        $result = ['id' => ''];
+
         if (isset($response['id']) && $response['id'] != null) {
-            return $response['id'];
+            $result = ['id' => $response['id']];
         }
 
-        return '';
+        return json_encode($result, true);
     }
 
     private function getCurrency(Currency $currency): string
