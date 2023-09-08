@@ -17,6 +17,9 @@ class CreatePaymentService
         $data = $stripeClient->paymentIntents->create([
             'amount' => $makePaymentDTO->getAmount() * 100,
             'currency' => $this->getCurrency($makePaymentDTO->getCurrency()),
+            'metadata' => [
+                'order_id' => $makePaymentDTO->getOrderId()
+            ]
         ]);
 
         $result = ['id' => $data->client_secret];

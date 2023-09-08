@@ -18,6 +18,7 @@ class CreatePaymentService
             "intent" => "CAPTURE",
             "purchase_units" => [
                 0 => [
+                    "reference_id" => $makePaymentDTO->getOrderId(),
                     "amount" => [
                         "currency_code" => $this->getCurrency($makePaymentDTO->getCurrency()),
                         "value" => number_format($makePaymentDTO->getAmount(), 2, '.')

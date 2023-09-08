@@ -23,7 +23,7 @@ class GetPaymentInfoService
         return new PaymentInfoDTO(
             $this->getStatus($resultArray['status']),
             PaymentSystem::STRIPE,
-            $resultArray['client_secret'],
+            $resultArray['metadata']['order_id'],
             $resultArray['id'],
             $resultArray['amount_received'] / 100,
             $this->getCurrency($resultArray['currency']),
