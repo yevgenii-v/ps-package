@@ -15,7 +15,7 @@ class GetPaymentInfoService
         $response = $liqpay->api("request", [
             'action' => 'status',
             'version' => '3',
-            'order_id' => $paymentId,
+            'payment_id' => $paymentId,
         ]);
         return new PaymentInfoDTO(
             $this->getStatus($response->status),
