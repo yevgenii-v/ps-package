@@ -21,7 +21,7 @@ class GetPaymentInfoService
         return new PaymentInfoDTO(
             $this->getStatus($response['status']),
             PaymentSystem::PAYPAL,
-            $response['id'],
+            $response['purchase_units']['0']['reference_id'],
             $response['purchase_units']['0']['payments']['captures']['0']['id'] ?? '',
             $response['purchase_units']['0']['payments']['captures']['0']['amount']['value'] ?? '',
             $this->getCurrency(
